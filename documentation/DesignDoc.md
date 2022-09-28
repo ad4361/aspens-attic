@@ -85,7 +85,7 @@ In implementing these enhancements, priority will be placed on implementing cust
 
 The site operates through the UI-implemented browser site, for use by both customers and the owner(s). The application's domain exists as a retail-business website.
 
-![Domain Model](./domain-models/domain_sprint4.png)
+![Domain Model](domain_sprint4.png)
 
 The major entities of our domain model are as follows: Store Owner, EStore, Inventory, Carving, Base, Wood, Buyer, Shopping Cart, Checkout, Purchase History, and Sales Dashboard.
 
@@ -247,15 +247,15 @@ Table: HTTP Requests
 
 ### Search: Sequence Diagram
 
-![Search: Sequence Diagram](Search.png)
+![Search: Sequence Diagram](./sequence-diagrams/Search.png)
 
 ### Add To Cart: Sequence Diagram
 
-![AddToCart](AddToCart.png)
+![AddToCart](./sequence-diagrams/AddToCart.png)
 
 ### Checkout: Sequence Diagram
 
-![Checkout](Checkout.png)
+![Checkout](./sequence-diagrams/Checkout.png)
 The checkout process begins after the user clicks the "Proceed to Checkout"
 button on the Shopping Cart page. Shipping information is then requested from
 the user on the frontend, and all that information is passed through the
@@ -269,19 +269,19 @@ cleared; if there is a problem an alert is shown to the user to fix it.
 
 ### Add Item (Admin): Sequence Diagram
 
-![Add Item: Sequence Diagram](./Sequence-Diagrams/add-item.svg)
+![Add Item: Sequence Diagram](./sequence-diagrams/add-item.svg)
 
 ### Update Item (Admin): Sequence Diagram
 
-![Update Item: Sequence Diagram](./Sequence-Diagrams/update-item.svg)
+![Update Item: Sequence Diagram](./sequence-diagrams/update-item.svg)
 
 ### Login: Sequence Diagram
 
-![Login: Sequence Diagram](./Sequence-Diagrams/Login.svg){ height=8.5in }
+![Login: Sequence Diagram](./sequence-diagrams/Login.svg){ height=8.5in }
 
 ### Delete Item (Admin)
 
-![Delete Item: Sequence Diagram](./Sequence-Diagrams/DeleteItem.png)
+![Delete Item: Sequence Diagram](./sequence-diagrams/DeleteItem.png)
 If the user is logged in as the admin, they are able to view a list of the existing items in the system via the Angular Admin-Manage-Items-Component and click on the trash can icon next to one of them in order to begin the process of deletion. Admin-Manage-Items-Component calls on Item.service which in turn sends an HTTP request to the InventoryController which calls on the InventoryFileDAO to return the ID of the item that the admin is trying to delete. (This is an example of movement from View to ModelView to Model.) If the item that the admin is trying to delete doesn't exist (this should never happen but just in case there is error checking for this), a 404 is returned by the InventoryController and the error is handled by Item.service and the Angular display is not updated. If the item that the admin is trying to delete does exist (this should always happen), then InventoryController will finally call on InventoryFileDAO to actually delete the item from items.json and save() the changes. An HTTP 200 is returned and the Angular display is updated to reflect that the item has been deleted. 
 
 
@@ -294,7 +294,7 @@ View-model control is delegated to the items.service and authentication.service,
 
 ### ViewModel: Class Diagram
 
-![ViewModel: Class Diagram](./class-diagrams/controller.png)
+![ViewModel: Class Diagram](controller.png)
 
 The REST specifications are discussed in the table above.
 
@@ -308,7 +308,7 @@ of CartEntry.
 
 ### Model: Persistence
 
-![Model: Persistence Diagrams](./class-diagrams/persistence.png)
+![Model: Persistence Diagrams](persistence.png)
 
 The four interfaces implementations correspond to one file JSON managed.
 
@@ -386,7 +386,7 @@ will only replace the updated status, since all other fields are not mutable.
 
 ### Model: Entities
 
-![Model Entities: Class Diagrams](./class-diagrams/model.png)
+![Model Entities: Class Diagrams](model.png)
 
 Considering this diagrams in the order of specifics to generals:
 
@@ -465,20 +465,20 @@ Although sonarqube can analyze code coverage they will be discussed in the testi
 
 Running sonarqube on projects will display the following dashboard.
 
-![Projects Dashboard](sonarqube/projects.jpg)
+![Projects Dashboard](./sonarqube/projects.jpg)
 
 Sonarqube highlights the following concerns code using which might have a
 security impact. Three of them revolve around the fact that randomizing products
 which appear on the homepage are randomized using `Math.random`, which is not
 cryptographically secure, and another one is involved with using geolocation.
 
-![Security Issues Review with Action Pending](sonarqube/security-unrev.jpg)
+![Security Issues Review with Action Pending](./sonarqube/security-unrev.jpg)
 
 We consider the issue of non-cryptographically secure numbers trivial in this
 context, and geolocation is required to provide a shipping estimate, although
 other less intrusive options can be considered.
 
-![Estore-API: Dashboard (After Security Approvals)](sonarqube/dashboard-api.jpg)
+![Estore-API: Dashboard (After Security Approvals)](./sonarqube/dashboard-api.jpg)
 
 ![Bugs][(./sonarqube/bugs.png)
 
@@ -489,7 +489,7 @@ is certainly not a breaking problem.
 We should do a type check here which is high priority. We have not encountered this bug
 directly because it has not come up yet in regular use. 
 
-![Estore-API: Dashboard](sonarqube/dashboard-ui.jpg)
+![Estore-API: Dashboard](./sonarqube/dashboard-ui.jpg)
 
 
 
