@@ -12,6 +12,8 @@ Since this project was for a class that is still assigning this project to curre
 * Angular
 * HTTP
 * REST API
+* Slack
+* Trello
 * Spring framework for REST API
 * MVVM architectural pattern
 * Agile methodology (Scrum)
